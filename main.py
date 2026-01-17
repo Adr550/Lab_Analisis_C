@@ -93,26 +93,38 @@ def sucesionTresRepetidos(lista):
 
 #-----------------EJERCICIO 2-------------------------------------
 
-#Encontrar numeros primos usando el principio de inclusion y exclusion
+#El número 2 es primo, pero no es impar, se agregó por aparte
 numeros_primos = [2]
 todo = 100
 numeros = [i for i in range(1,101,2)]
+
 C1 = [i for i in numeros if i % 7 == 0 and i != 7 ]
 C2 = [i for i in numeros  if i % 3 == 0 and i != 3]
 C3 = [i for i in numeros if i % 5 == 0 and i != 5]
 
-
-def interseccion (multiplos1,multiplos2):
+def Interseccion (multiplos1,multiplos2):
     """Esta función reune los múltiplos en común"""
     interseccion = []
-    for i in multiplos1 and multiplos2:
-        if i in multiplos1 and multiplos2:
+    for i in multiplos1:
+        if i in multiplos2:
             interseccion.append(i)
     return interseccion
+     
+N1 = Interseccion(C1,C2)
+N2 = Interseccion(C2,C3)
+N3 = Interseccion(C1,C3)
 
-N1 = interseccion(C1,C2)
-N2 = interseccion(C2,C3)
-N3 = interseccion(C1,C3)
+#Utilizar principio de inclusión y exclusión para encontrar la cantidad de numeros primos menores a 100
+#No se incluye la intersección triple ya que 3 * 5 * 7 > 100
+primos = (
+    len(numeros)
+    - len(C1)
+    - len(C2)
+    - len(C3)
+    + len(N1)
+    + len(N2)
+    + len(N3)
+)
 
 #Encontrar los numeros primos
 for i in numeros:
