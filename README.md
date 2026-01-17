@@ -43,6 +43,7 @@
   </div>
 
 </div>
+
 # Laboratorio 01:  Análisis Combinatorio
 
 ### Requerimientos
